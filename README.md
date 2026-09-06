@@ -85,7 +85,41 @@ NexusHR introduces a modular, multi-agent architecture where autonomous agents m
 
 ---
 
-## 4. Integration & Platform Ecosystem
+## 4. AI Connectivity & Universal LLM Add-on
+
+NexusHR features an enterprise **Dual-Mode AI Architecture** designed for both friction-free evaluation and scalable enterprise production:
+
+```
+                  ┌──────────────────────────────────────────────┐
+                  │          NexusHR AI Orchestrator             │
+                  └──────────────────────┬───────────────────────┘
+                                         │
+                 ┌───────────────────────┴───────────────────────┐
+                 ▼                                               ▼
+   ┌───────────────────────────┐                   ┌───────────────────────────┐
+   │  Mode A: Built-in Engine  │                   │  Mode B: Live LLM Add-on  │
+   │  (Zero-Key / Offline)     │                   │  (Plug-and-Play Adapter)  │
+   ├───────────────────────────┤                   ├───────────────────────────┤
+   │ • Semantic RAG retrieval  │                   │ • OpenAI (GPT-4o, mini)   │
+   │ • Dynamic template engine │                   │ • Google Gemini 1.5       │
+   │ • Multi-signal risk score │                   │ • Local Ollama / Llama 3  │
+   │ • 100% Free, Zero Setup   │                   │ • DeepSeek, Groq, vLLM    │
+   └───────────────────────────┘                   └───────────────────────────┘
+```
+
+### How the Add-on Works:
+1. **Out-of-the-Box (Offline Mode):** Anyone who clones this repository can run `python app.py` immediately without any API keys, paid credits, or internet connection. All agents run autonomously on our local deterministic semantic engine.
+2. **Plugging in Live Generative AI (Add-on Mode):**
+   Simply copy `.env.example` to `.env` and provide your API key. The universal adapter (`agents/ai_connector.py`) automatically detects your key and connects the agents to live cloud or local LLMs:
+   * **OpenAI:** Set `OPENAI_API_KEY=sk-...` (defaults to `gpt-4o-mini`)
+   * **Google Gemini:** Set `GEMINI_API_KEY=AIzaSy...` (defaults to `gemini-1.5-flash`)
+   * **Local Private LLM (Ollama):** Set `OLLAMA_BASE_URL=http://localhost:11434`
+3. **Graceful Failover:** If an API key expires, rate-limits, or experiences network downtime, the system automatically falls back to the built-in offline engine with zero downtime.
+4. **Zero Extra Dependencies:** The AI adapter uses Python's standard library (`urllib` and `json`), requiring **zero extra pip packages** to connect to external LLMs.
+
+---
+
+## 5. Integration & Platform Ecosystem
 
 NexusHR connects into standard enterprise SaaS stacks:
 - **Communication & Workspace:** Google Workspace, Slack Enterprise Grid
@@ -94,19 +128,20 @@ NexusHR connects into standard enterprise SaaS stacks:
 
 ---
 
-## 5. Technical Architecture & Tech Stack
+## 6. Technical Architecture & Tech Stack
 
 | Component | Technology | Purpose |
 | :--- | :--- | :--- |
 | **Backend Framework** | Python 3 + Flask | RESTful API routing, agent orchestration, and business logic |
 | **Database** | SQLite3 | High-performance ACID relational storage for employees, tasks, docs, and risk telemetry |
 | **AI & Retrieval** | Hybrid Policy RAG Engine | Semantic indexing, document chunking, citation ranking, and query log analytics |
+| **AI LLM Connector** | Universal AI Adapter (`urllib`) | Plug-and-play adapter for OpenAI, Gemini, Groq, and local Ollama models |
 | **Predictive Analytics** | Multi-Signal Scoring Engine | Algorithmic employee flight-risk classification & financial churn calculation |
 | **Frontend UI** | Modern HTML5 + Vanilla JS + CSS | Ultra-sleek, dark obsidian glassmorphic dashboard, responsive and dependency-free |
 
 ---
 
-## 6. Directory Structure
+## 7. Directory Structure
 
 ```
 d:/HR_Ops/
@@ -115,10 +150,12 @@ d:/HR_Ops/
 ├── seed_data.py                # Enterprise demo data seeder
 ├── test_backend.py             # Automated backend integration test suite
 ├── requirements.txt            # Python dependencies (Flask, Flask-CORS)
+├── .env.example                # Sample environment config for optional live AI models
 ├── .gitignore                  # Git ignore rules for caches, envs, and OS files
 ├── nexushr.db                  # Local SQLite database instance (auto-seeded)
 ├── agents/                     # Modular Autonomous HR Agents
 │   ├── __init__.py             # Agent suite package initialization
+│   ├── ai_connector.py         # Universal AI & LLM Add-on Adapter (OpenAI / Gemini / Ollama)
 │   ├── onboarding_agent.py     # Onboarding lifecycle pipeline & AI offer generator
 │   ├── policy_agent.py         # RAG-based Policy Copilot engine & citation manager
 │   └── attrition_agent.py      # Predictive flight-risk engine & retention action tracker
@@ -129,7 +166,7 @@ d:/HR_Ops/
 
 ---
 
-## 7. Quickstart Guide (Local Setup & Run)
+## 8. Quickstart Guide (Local Setup & Run)
 
 ### Prerequisites
 - Python 3.10+ (tested on Python 3.14)
@@ -140,19 +177,26 @@ d:/HR_Ops/
 pip install -r requirements.txt
 ```
 
-### 2. Initialize and Seed the Database
+### 2. (Optional) Configure Live AI Add-on
+```bash
+# Optional: Copy sample env and add your OpenAI or Gemini key
+cp .env.example .env
+# If skipped, NexusHR runs seamlessly on the built-in offline engine!
+```
+
+### 3. Initialize and Seed the Database
 ```bash
 python seed_data.py
 ```
 *Seeds sample employees, multi-phase onboarding checklists, policy knowledge base, integrations, and flight-risk profiles.*
 
-### 3. Run Backend Verification Tests
+### 4. Run Backend Verification Tests
 ```bash
 python test_backend.py
 ```
-*Runs automated tests against all REST endpoints (5/5 PASS).*
+*Runs automated tests against all REST endpoints.*
 
-### 4. Launch the NexusHR Platform
+### 5. Launch the NexusHR Platform
 ```bash
 python app.py
 ```
@@ -160,7 +204,7 @@ python app.py
 
 ---
 
-## 8. REST API Reference
+## 9. REST API Reference
 
 ### Onboarding Endpoints
 - `GET /api/hires` — List all new hires with structured onboarding task hierarchies.
@@ -188,7 +232,7 @@ python app.py
 
 ---
 
-## 9. Submission & Incubation Details
+## 10. Submission & Incubation Details
 
 - **Project:** NexusHR Autonomous Workforce Platform
 - **Pitch Fest:** BITSoM Vertex Builders' Pitch Fest 2026
