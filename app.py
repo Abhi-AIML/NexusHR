@@ -30,6 +30,7 @@ from agents.attrition_agent import (
     trigger_batch_nudges,
     seed_attrition_risks
 )
+from agents.ai_connector import get_active_ai_provider
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 CORS(app)
@@ -58,6 +59,8 @@ def get_system_status():
     critical_risks = cursor.fetchone()['critical_risks'] or 0
     conn.close()
 
+    ai_provider, ai_model, is_live_ai = get_active_ai_provider()
+
     return jsonify({
         "status": "online",
         "platform": "NexusHR Autonomous HR Platform",
@@ -68,6 +71,12 @@ def get_system_status():
             "onboarding": "Active",
             "policy_copilot": "Active",
             "attrition_guard": "Active"
+        },
+        "ai_engine": {
+            "provider": ai_provider,
+            "model": ai_model,
+            "is_live": is_live_ai,
+            "mode": "Live LLM Cloud / Local" if is_live_ai else "Built-in Autonomous (Offline Zero-Key)"
         }
     })
 
