@@ -6,6 +6,7 @@ AI offer letter drafting, and IT/HR integration provisioning.
 
 from datetime import datetime
 from database import get_db
+from agents.ai_connector import generate_llm_offer_letter, is_ai_connected
 
 ROLE_SPECIFIC_TASKS = {
     "Engineering": {
@@ -193,7 +194,12 @@ def toggle_task_status(task_id):
     return get_employee_with_tasks(employee_id), None
 
 def generate_ai_offer_letter(name, role, department, manager, start_date, ctc="₹22,00,000"):
-    """Generate dynamic AI Offer Letter text."""
+    """Generate dynamic AI Offer Letter text using live LLM or polished built-in engine."""
+    if is_ai_connected():
+        llm_letter = generate_llm_offer_letter(name, role, department, manager, start_date, ctc)
+        if llm_letter:
+            return llm_letter
+
     today_str = datetime.now().strftime("%B %d, %Y")
     return f"""Date: {today_str}
 
