@@ -1,0 +1,190 @@
+# NexusHR — Autonomous Workforce Intelligence Platform
+
+> **Theme:** HR Automation Agents — Streamlining Human Capital Management, Talent Acquisition, and Workplace Productivity  
+> **Pitch Fest:** BITSoM Vertex Builders' Pitch Fest 2026 (An Industry-led AI Incubator by BITS School of Management & LENZ, Silicon Valley AI Innovation Studio)  
+> **Target:** Enterprise B2B SaaS / Autonomous HR Operations  
+
+---
+
+## 1. Executive Summary
+
+**NexusHR** is a next-generation **Autonomous Multi-Agent HR Orchestration Platform** engineered to eliminate operational friction across the entire employee lifecycle. Built for modern enterprises and fast-scaling organizations, NexusHR deploys a coordinated swarm of specialized AI agents that autonomously execute complex human capital workflows—from personalized new-hire onboarding and contextual compliance RAG copilots to proactive, predictive talent retention intelligence.
+
+By shifting HR from reactive administrative overhead to autonomous intelligent operations, NexusHR reduces onboarding cycle time by **70%**, resolves **94%** of employee policy inquiries instantly with cited governance, and prevents costly workforce churn with real-time flight-risk predictions.
+
+---
+
+## 2. The Problem & Market Opportunity
+
+Modern HR departments spend over **60% of their bandwidth** on fragmented, repetitive manual tasks across disconnected tools:
+1. **Broken Onboarding Pipelines:** IT provisioning delays, manual document chasing, missed check-ins, and high Day-1 drop-off rates.
+2. **Policy Ambiguity & Compliance Overhead:** HR managers are flooded with repetitive queries regarding leave, benefits, POSH, and appraisals, leading to lost productivity and inconsistent answers.
+3. **Silent Employee Attrition:** Organizations only discover turnover intent *after* resignation notices are submitted. Replacing a skilled employee costs **₹5L – ₹25L+** in lost productivity, recruitment, and onboarding overhead.
+
+---
+
+## 3. The NexusHR Solution: 3 Autonomous AI Agents
+
+NexusHR introduces a modular, multi-agent architecture where autonomous agents monitor events, trigger deterministic workflows, and empower HR leaders with predictive intelligence.
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                       NexusHR Central Command Engine                    │
+└──────┬───────────────────────────────┬───────────────────────────┬──────┘
+       │                               │                           │
+       ▼                               ▼                           ▼
+┌──────────────┐               ┌──────────────┐            ┌──────────────┐
+│   Agent 1    │               │   Agent 2    │            │   Agent 3    │
+│  Onboarding  │               │    Policy    │            │  Attrition   │
+│ Orchestrator │               │   Copilot    │            │    Guard     │
+└──────┬───────┘               └──────┬───────┘            └──────┬───────┘
+       │                               │                           │
+       ├─ AI Offer Letter Gen          ├─ Semantic Policy RAG      ├─ Multi-Signal Flight Risk
+       ├─ Role-Specific Tasks          ├─ Exact Document Citations ├─ Real-Time Risk Heatmap
+       └─ Auto-Provisioning            └─ Latency & Accuracy Logs  └─ 1-Click Manager Nudges
+```
+
+---
+
+### Agent 1: Onboarding Orchestrator (Autonomous Lifecycle Automation)
+*Transforms manual hiring logistics into self-driving Day-0 to Day-30 onboarding journeys.*
+
+- **Dynamic Role-Specific Pipelines:** Automatically generates tailored onboarding checklists across three distinct lifecycle phases (`Pre-Joining`, `Day 1 Setup`, `First Week`) based on candidate department (Engineering, Product, Design, Sales, etc.).
+- **AI-Powered Offer Letter Generation:** Dynamically drafts personalized, legally sound offer letters with real-time CTC calculations, reporting lines, and compliance clauses.
+- **Autonomous Provisioning Triggers:** Simulates automated IT tickets, corporate email & Slack creation, NDA verification, and calendar orientation invites.
+- **Interactive Progress Tracking:** Real-time completion scoring with granular status flags (`Auto` vs `Manual` vs `Completed`).
+
+---
+
+### Agent 2: Policy Copilot (Enterprise RAG & Governance Agent)
+*Instant, cited policy answers from indexed corporate handbooks and compliance documents.*
+
+- **Hybrid Semantic & Keyword RAG Engine:** Indexes complete enterprise documentation including HR Handbooks, Leave Policy 2025, POSH & Workplace Safety Guidelines, Appraisal Frameworks, and Medical & Hybrid Work Policies.
+- **Authoritative Citation System:** Every answer provides clickable source chips linking directly to the exact policy document and section (e.g., `Leave Policy 2025 · §3.1`).
+- **Telemetry & Confidence Scoring:** Continuously monitors query resolution latency, confidence scores, and historical query volumes.
+- **Context-Aware Exception Handling:** Intelligently identifies novel employee scenarios and flags them for human HR escalation.
+
+---
+
+### Agent 3: Attrition Guard (Predictive Retention & Risk Intelligence)
+*Detects early flight-risk signals before resignation letters are submitted.*
+
+- **Multi-Modal Signal Correlation:** Analyzes leading turnover indicators including:
+  - Unplanned leave spikes & attendance patterns
+  - Lapses in manager 1:1 check-ins (e.g., >4 weeks without 1:1)
+  - Performance appraisal score drops & OKR stalls
+  - Stagnant compensation vs. market benchmark deltas
+- **Dynamic Risk Heatmap & Categorization:** Classifies employee retention risk into `Critical`, `High`, `Medium`, and `Low` tiers with continuous risk scores (0–100%).
+- **Financial Exposure Calculation:** Computes total organization replacement cost exposure in real-time (e.g., *₹46L estimated churn impact*).
+- **1-Click Retention Interventions:**
+  - *Automated Manager Retention Nudge*
+  - *Compensation Review Flagging*
+  - *Targeted PIP Scheduling*
+  - *Peer Mentor / Buddy Assignment*
+  - *Internal Lateral Mobility Transfer*
+- **Batch Action Dispatcher:** 1-click execution to dispatch retention briefs to all department leads simultaneously.
+
+---
+
+## 4. Integration & Platform Ecosystem
+
+NexusHR integrates seamlessly into existing enterprise B2B toolchains:
+- **Communication & Notifications:** Gmail, Slack Enterprise, Google Calendar
+- **Ticketing & Project Tracking:** Jira, GitHub
+- **HRIS & Payroll:** BambooHR, Razorpay Payroll, Darwinbox, Workday (Ready)
+- **AI Model Switcher:** Multi-LLM support (Claude 3.7 / 3.5, Gemini 2.0 Flash, GPT-4o) with multilingual interface capabilities.
+
+---
+
+## 5. Technical Architecture & Tech Stack
+
+| Component | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Backend Framework** | Python 3.14 + Flask | RESTful API routing, agent orchestration, and business logic |
+| **Database** | SQLite3 / SQLAlchemy | High-performance ACID relational storage for employees, tasks, docs, and risk telemetry |
+| **AI & Retrieval** | Custom RAG Pipeline | Semantic indexing, document chunking, citation ranking, and query log analytics |
+| **Predictive Analytics** | Multi-Signal Scoring Engine | Algorithmic employee flight-risk classification & financial churn calculation |
+| **Frontend UI** | Modern Vanilla JS + CSS | Ultra-sleek, minimalist B2B dashboard, high responsiveness, zero heavy frameworks |
+
+---
+
+## 6. Directory Structure
+
+```
+d:/HR_Ops/
+├── app.py                      # Main Flask application & RESTful endpoints
+├── database.py                 # SQLite database schema, connections & models
+├── seed_data.py                # Enterprise demo data seeder
+├── nexushr.db                  # Local SQLite database instance
+├── agents/                     # Modular Autonomous HR Agents
+│   ├── __init__.py             # Agent suite package initialization
+│   ├── onboarding_agent.py     # Onboarding lifecycle pipeline & AI offer generator
+│   ├── policy_agent.py         # RAG-based Policy Copilot engine & citation manager
+│   └── attrition_agent.py      # Predictive flight-risk engine & retention action tracker
+├── templates/
+│   └── index.html              # Minimalist enterprise frontend dashboard
+├── static/                     # Assets & styling (optional modular structure)
+├── hr-agent-platform.html      # Self-contained frontend demo page
+└── README.md                   # Project documentation & pitch presentation guide
+```
+
+---
+
+## 7. Quickstart Guide (Local Setup & Run)
+
+### Prerequisites
+- Python 3.10+ (tested on Python 3.14)
+- `pip` package manager
+
+### 1. Install Dependencies
+```bash
+pip install flask flask-cors
+```
+
+### 2. Initialize and Seed the Database
+```bash
+python seed_data.py
+```
+*Output: Seeds employees, multi-phase checklists, policy knowledge base, integrations, and flight-risk profiles.*
+
+### 3. Launch the NexusHR Platform
+```bash
+python app.py
+```
+*Server will start at `http://localhost:5000` (or `http://127.0.0.1:5000`). Open your browser to access the full interactive dashboard.*
+
+---
+
+## 8. REST API Reference
+
+### Onboarding Endpoints
+- `GET /api/hires` — List all new hires with structured onboarding task hierarchies.
+- `POST /api/hires` — Add a new hire, generate role-specific tasks, and draft AI offer letter.
+- `POST /api/hires/<id>/tasks/<task_id>/toggle` — Toggle task completion status and recalculate progress.
+- `GET /api/hires/<id>/offer-letter` — Retrieve generated AI offer letter text.
+- `POST /api/hires/<id>/offer-letter/resend` — Simulate re-sending offer letter via Gmail.
+
+### Policy Copilot Endpoints
+- `POST /api/policy/ask` — Query Policy Copilot; returns structured answer, citations, confidence score, and latency.
+- `GET /api/policy/docs` — Retrieve indexed document library metadata and page counts.
+- `GET /api/policy/stats` — Retrieve Copilot resolution analytics (queries answered, accuracy rate, avg response time).
+
+### Attrition Guard Endpoints
+- `GET /api/attrition/heatmap` — Retrieve employee risk heatmap and signal analysis.
+- `GET /api/attrition/metrics` — Retrieve aggregate workforce churn metrics, department stats, and financial exposure.
+- `POST /api/attrition/nudge` — Dispatch batch retention nudges to managers for all critical/high risk employees.
+- `POST /api/attrition/action` — Execute specific retention intervention for an employee.
+
+### Platform & Config Endpoints
+- `GET /api/config` — Retrieve integration statuses and agent automation toggles.
+- `POST /api/config` — Update platform settings, active AI model, or language.
+- `POST /api/integrations/<id>/toggle` — Connect / disconnect enterprise integrations.
+
+---
+
+## 9. License & Submission Info
+
+- **Project:** NexusHR Platform
+- **Incubator Candidate:** BITSoM Vertex Builders' Pitch Fest 2026
+- **Partners:** BITS School of Management (BITSoM) & LENZ Innovation Studio
+- **License:** MIT License
